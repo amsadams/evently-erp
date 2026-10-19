@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+:root {
+  --canvas: #f7f8fc;
+  --surface: #ffffff;
+  --subtle: #f1f3f9;
+  --ink: #182033;
+  --muted: #687085;
+  --line: #e5e8f0;
+  --primary: #6d4aff;
+  --primary-soft: #efeaff;
+  --success: #16835d;
+  --success-soft: #e4f5ee;
+  --warning: #a85c00;
+  --warning-soft: #fdf1de;
+  --danger: #c4364f;
+  --danger-soft: #fbe9ed;
+  --info: #2167c8;
+  --info-soft: #e6effb;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-subtle: var(--subtle);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-primary: var(--primary);
+  --color-primary-soft: var(--primary-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html, body { height: 100%; }
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+.scroll-thin::-webkit-scrollbar { height: 8px; width: 8px; }
+.scroll-thin::-webkit-scrollbar-thumb { background: #d5d9e5; border-radius: 8px; }
+
+@keyframes fade-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@keyframes overlay-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes sheet-in { from { transform: translateX(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes pop-in { from { opacity: 0; transform: translate(-50%, -48%) scale(0.98); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+.animate-fade { animation: fade-in 0.18s ease-out; }
+.animate-overlay { animation: overlay-in 0.15s ease-out; }
+.animate-sheet { animation: sheet-in 0.2s ease-out; }
+.animate-pop { animation: pop-in 0.16s ease-out; }
+@keyframes pulse-skel { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+.skeleton { background: var(--subtle); border-radius: 8px; animation: pulse-skel 1.4s ease-in-out infinite; }
+
+@media print {
+  aside, header, nav, .no-print { display: none !important; }
+  main { padding: 0 !important; }
+}
+
+/* Grid/flex children must be allowed to shrink below their content width (prevents horizontal page scroll on phones). */
+main .grid > *, main .flex > * { min-width: 0; }
