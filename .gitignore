@@ -44,3 +44,9 @@ next-env.d.ts
 /test-results/
 /playwright-report/
 /shots/
+
+# cloudflare & opennext
+.open-next/
+.wrangler/
+.dev.vars
+
